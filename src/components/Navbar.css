@@ -1,0 +1,100 @@
+/* Navbar Layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  background-color: #1a1a2e;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Style */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00bfff;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Nav Item Style */
+.nav-item {
+  position: relative;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Hover Text Color */
+.nav-item:hover {
+  color: #00bfff;
+}
+
+/* Underline Animation (Appears L→R, Disappears L→R) */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #00bfff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.nav-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.logo-img {
+  height: 60px; 
+  width: auto;
+  object-fit: contain;
+  border-radius: 5px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.navbar-logo .main-sm {
+  font-size: 3rem;
+  font-weight: 1000;
+  display: flex;
+  letter-spacing: -5px; /* remove gap between S and M */
+}
+
+.navbar-logo .main-sm .s {
+  color: white;
+}
+
+.navbar-logo .main-sm .m {
+  color: #00bfff;
+}
+
+.navbar-logo .subtext {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00bfff;
+  margin-top: 0.2rem;
+  text-align: center;
+}

@@ -1,0 +1,157 @@
+/* Preloader.css */
+
+/* Curtain animation only — no white background! */
+.preloader-curtain {
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  background-color: #a0a0a0; /* Curtain color */
+  z-index: 1001;
+  top: 0;
+  transition: transform 2s ease-in-out;
+  pointer-events: none;
+}
+
+/* Starting position */
+.left-curtain {
+  left: 0;
+  transform: translateX(0);
+}
+
+.right-curtain {
+  right: 0;
+  transform: translateX(0);
+}
+
+/* Trigger curtain open */
+.left-curtain.open {
+  transform: translateX(-100%);
+}
+
+.right-curtain.open {
+  transform: translateX(100%);
+}
+
+.preloader-content {
+  position: fixed;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background-color: transparent; /* Transparent to let website show */
+  transition: opacity 1.5s ease-out;
+}
+
+.preloader-content.fade {
+  opacity: 0;
+}
+
+.preloader-title {
+  display: flex;
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgb(12, 12, 12), rgb(27, 138, 228));
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: blue-fill 2s linear forwards;
+  z-index: 10;
+  position: relative;
+  opacity: 1;
+  transition: opacity 1.2s ease-out;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.preloader-title.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.preloader-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, rgb(12, 12, 12), rgb(27, 138, 228));
+  transition: transform 1.2s ease-out;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.preloader-title.fade-out::after {
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 1.2s ease-out 0.3s; 
+}
+
+.preloader-title-mask {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: clip-path 1.2s ease-in-out;
+  clip-path: inset(0 0 0 0);
+}
+
+.preloader-title-mask.shrink-out {
+  clip-path: inset(0 100% 0 0);
+}
+
+.preloader-title span {
+  display: inline-block;
+  transition: transform 1.2s ease-in-out;
+}
+
+.left-text.move-out {
+  transform: translateX(-100vw);
+}
+
+.right-text.move-out {
+  transform: translateX(100vw);
+}
+
+@keyframes blue-fill {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* === Logo in Navbar === */
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.navbar-logo .main-sm {
+  font-size: 3rem;
+  font-weight: 900;
+  display: flex;
+  letter-spacing: -4px;
+}
+
+.navbar-logo .main-sm .s {
+  color: white;
+}
+
+.navbar-logo .main-sm .m {
+  color: #00bfff;
+}
+
+.navbar-logo .subtext {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00bfff;
+  margin-top: 0.2rem;
+  text-align: center;
+}
