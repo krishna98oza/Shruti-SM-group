@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-scroll";
 import './Navbar.css';
 import logo from '../Asset/SM-Logo3.png';
 
@@ -11,51 +10,20 @@ const Navbar = () => {
       </div>
 
       <div className="nav-links">
-        <Link
-          to="home-section"
-          smooth={true}
-          duration={800}
-          offset={-70}
-          className="nav-item"
-        >
-          Home
-        </Link>
-        <Link
-          to="services-section"
-          smooth={true}
-          duration={800}
-          offset={-70}
-          className="nav-item"
-        >
-          Services
-        </Link>
-        <Link
-          to="about-section"
-          smooth={true}
-          duration={800}
-          offset={-70}
-          className="nav-item"
-        >
-          About
-        </Link>
-        <Link
-          to="footer-section"
-          smooth={true}
-          duration={800}
-          offset={-10}
-          className="nav-item"
-        >
-          Contact
-        </Link>
-        <Link
-          to="client-section"
+        <a href="#home" smooth={true} duration={800} offset={-70} className="nav-item">Home</a>
+        <a href="#service" smooth={true} duration={800} offset={-70} className="nav-item">Services</a>
+        <a href="#about" smooth={true} duration={800} offset={-70} className="nav-item">About</a>
+        <a href="#contact" smooth={true} duration={800} offset={-10} className="nav-item">Contact</a>
+        {/* <Link
+          to="client"
+          spy={true}
           smooth={true}
           duration={800}
           offset={-70}
           className="nav-item"
         >
           Client
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );

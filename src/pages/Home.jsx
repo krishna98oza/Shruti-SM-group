@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Link,Element } from 'react-scroll';
 import './Home.css';
 import ImageSlider from '../components/ImageSlider';
 import bannerImage1 from '../Asset/bannerImg1.jpg';
 import bannerImage3 from '../Asset/bannerImg3.jpg';
+import logoImg2 from '../Asset/logoImg2.jpg'
+import Navbar from '../components/Navbar';
+import FooterForm from '../components/FooterForm';
+
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
@@ -43,20 +47,22 @@ useEffect(() => {
 }, []);
 
   return (
-    <div style={{ padding: '1rem', color: 'white' }}>
-      
+    <div id='home' style={{ padding: '1rem', color: 'white' }}>
+      <Navbar />
       {/* Hero Section */}
-      <motion.section id="home-section"
+      <motion.section
         variants={fadeUpVariant}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         style={{ textAlign: 'center', marginBottom: '0.5rem' }}
       >
-        <h1 className="white-text" style={{ fontSize: '5rem' }}>
+        {/* <Element name="home"> */}
+        <h1 className="white-text" style={{ fontSize: '4rem' }}>
           Welcome to SM Marketing
         </h1>
-        <h3 className="white-text" style={{ fontSize: '2.5rem' }}>
+        {/* </Element> */}
+        <h3 className="white-text" style={{ fontSize: '1rem' }}>
           Empowering your brand with digital solutions that deliver results.
         </h3>
 
@@ -106,9 +112,9 @@ useEffect(() => {
           <ImageSlider />
 
         </div>
-        <div
+        <div id='service'
           style={{
-            display: 'flex',
+            display: 'bock',
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: '4rem',
@@ -130,43 +136,7 @@ useEffect(() => {
               style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
             />
           </motion.div> */}
-          {/* Left: Zooming Services (60%) */}
-          <div
-  style={{
-    width: '80%',
-    minHeight: '250px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '3rem',
-    backgroundColor: 'transparent',
-    position: 'relative',
-  }}
->
-  {services.map((service, index) => (
-    <motion.div
-      key={index}
-      initial={{ scale: 1 }}
-      animate={{ scale: currentZoomIndex === index ? 1.5 : 1 }}
-      transition={{ duration: 0.6 }}
-      style={{
-        fontSize: '1.6rem',
-        fontWeight: '700',
-        color: 'white',
-        transform: `translate(${randomShifts[index].x}px, ${randomShifts[index].y}px)`,
-        transition: 'transform 0.5s ease',
-      }}
-    >
-      {service}
-    </motion.div>
-  ))}
-</div>
-
-
-
-
-          {/* Right: Animated Text (40%) */}
+          {/* Upper: Animated Text (40%) */}
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -177,13 +147,14 @@ useEffect(() => {
               duration: 0.6,
             }}
             style={{
-              width: '20%',
+              width: '100%',
               textAlign: 'center',
             }}
           >
+            
             <h2
               style={{
-                fontSize: '5.5rem',
+                fontSize: '3rem',
                 fontWeight: 'bold',
                 color: 'white',
               }}
@@ -191,13 +162,44 @@ useEffect(() => {
               We Provide
             </h2>
           </motion.div>
+          {/* Lower: Zooming Services (60%) */}
+          <div
+          style={{
+            width: '100%',
+            minHeight: '250px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '5rem',
+            backgroundColor: 'transparent',
+            position: 'relative',
+          }}
+        >
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ scale: 1 }}
+                animate={{ scale: currentZoomIndex === index ? 1.6 : 0.8 }}
+                transition={{ duration: 0.6 }}
+                style={{
+                  fontSize: '1.6rem',
+                  fontWeight: '700',
+                  color: 'white',
+                  transform: `translate(${randomShifts[index].x}px, ${randomShifts[index].y}px)`,
+                  transition: 'transform 0.5s ease',
+                }}
+              >
+                {service}
+              </motion.div>
+            ))}
+          </div>
         </div>
-
 
       </motion.section>
 
       {/* Services Highlights */}
-      <motion.section id="services-section"
+      <motion.section
         style={{
           display: 'flex',
           gap: '3rem',
@@ -260,29 +262,135 @@ useEffect(() => {
         </Link>
       </motion.div>
 
-      <footer className="site-footer" id="about-section">
-  <div className="footer-content">
-    <div className="footer-info">
-      <h2>Contact Us</h2>
-      <p><strong>Name:</strong> Shruti Oza</p>
-      <p><strong>Mobile:</strong> 9730385112</p>
-      <p><strong>Email:</strong> <a href="mailto:shrutiroza@gmail.com">shrutiroza@gmail.com</a></p>
-    </div>
+        <div id='about'
+          style={{
+            padding: '4rem 2rem',
+            backgroundColor: '#transperent',
+            color: 'white',
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '3rem',
+              textAlign: 'center',
+              marginBottom: '3rem',
+              fontWeight: 'bold',
+            }}
+          >
+            Meet Our Team
+          </h2>
 
-    <div className="footer-desc">
-      <h2>About</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-      </p>
-    </div>
-  </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: '2.5rem',
+            }}
+          >
+            {[logoImg2, logoImg2, logoImg2, logoImg2].map((img, index) => (
+            <div
+              key={`team-${index}`}
+              style={{
+                width: '250px',
+                textAlign: 'center',
+                backgroundColor: '#46454510',
+                padding: '1.5rem',
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              }}
+            >
+              <img
+                src={img}
+                alt={`Team member ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: '250px',
+                  objectFit: 'cover',
+                  borderRadius: '10px',
+                  marginBottom: '1rem',
+                }}
+              />
+              <p style={{ fontSize: '1rem', color: '#ccc', lineHeight: '1.5' }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                tristique, nulla non facilisis, lorem nisi tincidunt odio.
+              </p>
+            </div>
+          ))}
 
-  <div className="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} SM Marketing. All rights reserved.</p>
-  </div>
-</footer>
+          </div>
+        </div>
 
+        <div id="contact">
+            <FooterForm />
+        </div>
+      {/* <footer id='contact' className="site-footer">
+        <div className="footer-content">
+          <div className="footer-info">
+            <h2>Contact Us</h2>
+            <p><strong>Name:</strong> XYZ</p>
+            <p><strong>Mobile:</strong> 123456789</p>
+            <p><strong>Email:</strong> <a href="mailto:xyz@gmail.com">xyz@gmail.com</a></p>
+          </div>
+
+          <div className="footer-form-section">
+            <h2 style={{ color: '#fff', marginBottom: '1rem' }}>Get in Touch</h2>
+            <form style={{ display: 'flex', flexDirection: 'row', gap: '1rem', width: '100%', maxWidth: '1000px' }}>
+              <input
+                type="text"
+                placeholder="Your Name"
+                style={{
+                  padding: '0.8rem 1rem',
+                  borderRadius: '8px',
+                  border: 'none',
+                  fontSize: '1rem'
+                }}
+              />
+              <input
+                type="tel"
+                placeholder="Mobile Number"
+                style={{
+                  padding: '0.8rem 1rem',
+                  borderRadius: '8px',
+                  border: 'none',
+                  fontSize: '1rem'
+                }}
+              />
+              <input
+                type="email"
+                placeholder="Gmail Address"
+                style={{
+                  padding: '0.8rem 1rem',
+                  borderRadius: '8px',
+                  border: 'none',
+                  fontSize: '1rem'
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '0.8rem',
+                  width: '12rem',
+                  backgroundColor: '#00BFFF', // sky blue
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} SM Marketing. All rights reserved.</p>
+        </div>
+      </footer> */}
     </div>
     
   );
