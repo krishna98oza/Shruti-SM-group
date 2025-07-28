@@ -67,6 +67,7 @@ const FooterForm = () => {
             maxWidth: '400px',
           }}
         >
+            <h2 style={{ color: '#fff', marginBottom: '10px' }}>Get in Touch</h2>
           <input
             type="text"
             name="name"

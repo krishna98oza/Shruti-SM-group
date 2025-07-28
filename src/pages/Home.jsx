@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import '../App.css';
 import { motion } from 'framer-motion';
-import { Link,Element } from 'react-scroll';
+import { Link } from 'react-scroll';
 import './Home.css';
 import ImageSlider from '../components/ImageSlider';
-import bannerImage1 from '../Asset/bannerImg1.jpg';
-import bannerImage3 from '../Asset/bannerImg3.jpg';
 import logoImg2 from '../Asset/logoImg2.jpg'
 import Navbar from '../components/Navbar';
 import FooterForm from '../components/FooterForm';
@@ -15,7 +13,14 @@ const fadeUpVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-const Home = () => {
+const Home = ({ setShowExplore }) => {
+
+  useLayoutEffect(() => {
+    const root = document.getElementById("root");
+    if (root) {
+      root.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
     const services = [
     "Social Media Handling",
     "Advertising",
@@ -25,6 +30,7 @@ const Home = () => {
     "SEO Optimization",
     "Google Ads",
     "YouTube Marketing",
+    "Logo Creation"
   ];
 
   const [currentZoomIndex, setCurrentZoomIndex] = useState(0);
@@ -39,7 +45,8 @@ const [randomShifts] = useState(() =>
 
 useEffect(() => {
   const interval = setInterval(() => {
-    const next = Math.floor(Math.random() * services.length);
+    let lenght = services.length;
+    const next = Math.floor(Math.random() * lenght);
     setCurrentZoomIndex(next);
   }, 1000);
 
@@ -258,7 +265,7 @@ useEffect(() => {
         style={{ textAlign: 'center', marginTop: '3rem' }}
       >
         <Link to="/services">
-          <button style={ctaButtonStyle}>Explore Our Services</button>
+          <button style={ctaButtonStyle} onClick={() => setShowExplore(true)}>Explore Our Services</button>
         </Link>
       </motion.div>
 
@@ -395,15 +402,6 @@ useEffect(() => {
     
   );
   
-};
-
-const cardStyle = {
-  backgroundColor: '#1e1e2f',
-  padding: '1.5rem',
-  borderRadius: '10px',
-  width: '250px',
-  textAlign: 'center',
-  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
 };
 
 const ctaButtonStyle = {

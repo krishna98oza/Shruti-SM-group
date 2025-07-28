@@ -41,6 +41,15 @@
   color: #00bfff;
 }
 
+.nav-item:where(button) {
+  background: none;
+  border: none;
+  padding-right: 2rem;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
 /* Underline Animation (Appears L→R, Disappears L→R) */
 .nav-item::after {
   content: '';

@@ -9,7 +9,7 @@ body {
 body, html {
   margin: 0;
   padding: 0;
-  background-color: transparent; /* or your site background */
+  background-color: transparent; 
   color: white;
   overflow-x: hidden;
 }

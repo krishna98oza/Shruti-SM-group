@@ -1,8 +1,7 @@
-import React from "react";
 import './Navbar.css';
 import logo from '../Asset/SM-Logo3.png';
 
-const Navbar = () => {
+const Navbar = ({ isExplore, setShowExplore }) => {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -10,10 +9,16 @@ const Navbar = () => {
       </div>
 
       <div className="nav-links">
+        {isExplore ? (
+          <button onClick={() => {setShowExplore(false);setTimeout(() => window.scrollTo(0, 0), 10);}} className="nav-item">Home</button>
+        ) : (
+          <>
         <a href="#home" smooth={true} duration={800} offset={-70} className="nav-item">Home</a>
         <a href="#service" smooth={true} duration={800} offset={-70} className="nav-item">Services</a>
         <a href="#about" smooth={true} duration={800} offset={-70} className="nav-item">About</a>
         <a href="#contact" smooth={true} duration={800} offset={-10} className="nav-item">Contact</a>
+          </>
+        )}
         {/* <Link
           to="client"
           spy={true}
