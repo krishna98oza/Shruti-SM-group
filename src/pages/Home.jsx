@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react';
 import '../App.css';
-import { motion } from 'framer-motion';
+import { motion, px } from 'framer-motion';
 import { Link } from 'react-scroll';
 import './Home.css';
 import ImageSlider from '../components/ImageSlider';
-import logoImg2 from '../Asset/logoImg2.jpg'
+import logoImg2 from '../Asset/UK-Digitals Logo.png'
 import Navbar from '../components/Navbar';
 import FooterForm from '../components/FooterForm';
+import heroImg from '../Asset/UK digital header .jpg'
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 50 },
@@ -54,7 +55,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div id='home' style={{ padding: '1rem', color: 'white' }}>
+    <div id='home' style={{color: 'white' }}>
       <Navbar />
       {/* Hero Section */}
       <motion.section
@@ -66,14 +67,28 @@ useEffect(() => {
       >
         {/* <Element name="home"> */}
         <h1 className="white-text" style={{ fontSize: '4rem' }}>
-          Welcome to SM Marketing
+          Welcome to UK Digitals
         </h1>
-        {/* </Element> */}
+        {/* </Element> */}  
         <h3 className="white-text" style={{ fontSize: '1rem' }}>
-          Empowering your brand with digital solutions that deliver results.
+          Providing digital services to make you degitalised
         </h3>
 
-        <motion.div
+        <motion.section
+          className="w-full overflow-hidden"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <img
+            src={heroImg} // replace with your image path
+            width="80%"
+            alt="Hero Banner"
+            className="w-full h-auto object-cover"
+          />
+        </motion.section>
+
+        {/* <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           transition={{
@@ -107,7 +122,7 @@ useEffect(() => {
             </motion.span>
           </h2>
           <p style={{ fontSize: '1.5rem' }}>Offer for Limited Time Period</p>
-        </motion.div>
+        </motion.div> */}
 
 
         <div style={{ marginTop: '2rem'}}>
@@ -170,7 +185,7 @@ useEffect(() => {
             </h2>
           </motion.div>
           {/* Lower: Zooming Services (60%) */}
-          <div
+          {/* <div
           style={{
             width: '100%',
             minHeight: '250px',
@@ -200,7 +215,7 @@ useEffect(() => {
                 {service}
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </div>
 
       </motion.section>
@@ -216,18 +231,54 @@ useEffect(() => {
         }}
       >
         {[
-          {
-            title: 'Social Media Management',
-            desc: 'We handle your social platforms to boost engagement and grow your audience.',
-          },
-          {
-            title: 'Digital Advertising',
-            desc: 'Targeted ad campaigns across Google, Facebook, Instagram & more.',
-          },
-          {
-            title: 'Brand Strategy',
-            desc: 'Crafting the perfect brand voice and online presence for your business.',
-          },
+        {
+          title: 'Aadhar Card Services',
+          desc: 'New enrollment, updates, and corrections for your Aadhar card.',
+        },
+        {
+          title: 'PAN Card Services',
+          desc: 'Apply for new PAN or update details quickly and securely.',
+        },
+        {
+          title: 'Online Government Applications',
+          desc: 'Filing and tracking various state and central government applications.',
+        },
+        {
+          title: 'Smart Card Services',
+          desc: 'Issue and renewal of smart cards for various schemes and benefits.',
+        },
+        {
+          title: 'Income Certificate',
+          desc: 'Apply for income certificates for government schemes and benefits.',
+        },
+        {
+          title: 'Ration Card Services',
+          desc: 'New ration card application, updates, and duplicate requests.',
+        },
+        {
+          title: 'Caste Certificate',
+          desc: 'Issuance and verification of caste certificates for eligible citizens.',
+        },
+        {
+          title: 'Birth & Death Certificates',
+          desc: 'Application, correction, and duplicate issuance of certificates.',
+        },
+        {
+          title: 'Vehicle & License Services',
+          desc: 'Driving license applications, renewals, and vehicle registration help.',
+        },
+        {
+          title: 'Passport Services',
+          desc: 'New passport applications, renewals, and police verification guidance.',
+        },
+        {
+          title: 'Voter ID Services',
+          desc: 'Apply for new voter ID, corrections, and duplicate card requests.',
+        },
+        {
+          title: 'Property Registration Assistance',
+          desc: 'Guidance and online form submissions for property registrations.',
+        },
         ].map((item, index) => (
           <motion.div
             key={index}
@@ -256,8 +307,9 @@ useEffect(() => {
       </motion.section>
 
 
+
       {/* CTA Button */}
-      <motion.div
+      {/* <motion.div
         variants={fadeUpVariant}
         initial="hidden"
         whileInView="visible"
@@ -267,7 +319,7 @@ useEffect(() => {
         <Link to="/services">
           <button style={ctaButtonStyle} onClick={() => setShowExplore(true)}>Explore Our Services</button>
         </Link>
-      </motion.div>
+      </motion.div> */}
 
         <div id='about'
           style={{

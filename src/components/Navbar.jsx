@@ -1,5 +1,5 @@
 import './Navbar.css';
-import logo from '../Asset/SM-Logo3.png';
+import logo from '../Asset/UK-Digitals Logo.png';
 
 const Navbar = ({ isExplore, setShowExplore }) => {
   return (

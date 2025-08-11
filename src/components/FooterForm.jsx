@@ -44,15 +44,15 @@ const FooterForm = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           gap: '2rem',
-          width: '80%',
+          width: '100%',
           margin: '0 auto',
         }}
       >
         {/* 👉 Contact Info Block */}
         <div className="footer-info" style={{ flex: 1 }}>
           <h2>Contact Us</h2>
-          <p><strong>Name:</strong> XYZ</p>
-          <p><strong>Mobile:</strong> 123456789</p>
+          <p><strong>Name:</strong> Uddesh Kodnikar</p>
+          <p><strong>Mobile:</strong> 9579733184</p>
           <p><strong>Email:</strong> <a href="mailto:xyz@gmail.com" style={{ color: '#00BFFF' }}>xyz@gmail.com</a></p>
         </div>
 

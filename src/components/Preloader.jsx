@@ -6,40 +6,39 @@ const Preloader = ({ onFinish }) => {
   const [textExit, setTextExit] = useState(false);
 
   useEffect(() => {
-  const textFadeTimer = setTimeout(() => {
-    setTextExit(true); // start fading text & underline
-  }, 1500); // fade text first
+    // Trigger fade-out of text
+    const textFadeTimer = setTimeout(() => {
+      setTextExit(true);
+    }, 1500);
 
-  const openCurtainsTimer = setTimeout(() => {
-    setCurtainsOpen(true); // open curtains after text fades
-  }, 2500);
+    // Trigger curtain open AFTER a small delay so browser registers initial state
+    const openCurtainsTimer = setTimeout(() => {
+      requestAnimationFrame(() => setCurtainsOpen(true));
+    }, 2500);
 
-  const finishTimer = setTimeout(() => {
-    onFinish();
-  }, 4000);
+    // Finish preloader
+    const finishTimer = setTimeout(() => {
+      if (typeof onFinish === 'function') onFinish();
+    }, 4500);
 
-  return () => {
-    clearTimeout(textFadeTimer);
-    clearTimeout(openCurtainsTimer);
-    clearTimeout(finishTimer);
-  };
-}, [onFinish]);
-
+    return () => {
+      clearTimeout(textFadeTimer);
+      clearTimeout(openCurtainsTimer);
+      clearTimeout(finishTimer);
+    };
+  }, [onFinish]);
 
   return (
     <>
-      <div className={`preloader-curtain left-curtain ${curtainsOpen ? 'open' : ''}`} />
-      <div className={`preloader-curtain right-curtain ${curtainsOpen ? 'open' : ''}`} />
-
-       <div className={`preloader-content ${textExit ? 'fade' : ''}`}>
-           <div className={`preloader-title-mask ${textExit ? 'shrink-out' : ''}`}>
-            <h1 className={`preloader-title ${textExit ? 'fade-out' : ''}`}>
-                <span className="left-text">SM</span>
-                <span className="right-text"> Marketing</span>
-            </h1>
-           </div>
+      <div className={`preloader-curtain ${curtainsOpen ? 'open' : ''}`} />
+      <div className={`preloader-content ${textExit ? 'fade' : ''}`}>
+        <div className={`preloader-title-mask ${textExit ? 'shrink-out' : ''}`}>
+          <h1 className={`preloader-title ${textExit ? 'fade-out' : ''}`}>
+            <span className="left-text">UK-</span>
+            <span className="right-text">Digitals</span>
+          </h1>
+        </div>
       </div>
-
     </>
   );
 };
